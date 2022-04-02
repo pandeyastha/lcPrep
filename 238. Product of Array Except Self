@@ -1,0 +1,18 @@
+class Solution {
+public:
+    vector<int> productExceptSelf(vector<int>& nums) {
+        int leftProd=1;
+        int rightProd=1;
+        vector<int>v(nums.size(),1);
+        for(int i=1;i<nums.size();i++){
+            leftProd*=nums[i-1];
+            v[i]*=leftProd;
+        }
+        for(int i=nums.size()-2;i>=0;i--){
+            rightProd*=nums[i+1];
+            v[i]*=rightProd;
+        }
+        return v;
+            
+    }
+};
